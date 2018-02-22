@@ -4,11 +4,14 @@
 	class Admin extends CI_Controller {
 	
 		private $tabel = "admin";
+		private $tabel_member = "member";
+		private $tabel_upgrade = "upgrade";
 
 		public function __construct()
 		{
 			parent::__construct();
 			$this->load->model('Login_model');
+			$this->load->model('Member_model');
 			$this->load->library('Cek_login');
 		}
 
@@ -49,17 +52,32 @@
 			$this->cek_login->cek_sesi($datanya, 'status_masuk', 'ya', 'admin');
 
 
+			$data = array(
+						'page' => $page,
+						'menu' => base_url('asset/dashboard_admin/menu.php'),
+						'content' => 'dashboard',
+						'member' => $this->Member_model->baca_data($this->tabel_member),
+						'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade)
+					);
 
-			$arrainya = array('page' => $page);
-			$this->load->view('admin/dashboard/dasboard',$arrainya);
 
 
+			$this->load->view('admin/dashboard/layout',$data);
 
 			// untuk logout
 			if ($page == 'logout') {
 				$this->session->sess_destroy('status_masuk');
 				redirect('admin');
 			}
+		}
+
+		// aksi
+		public function hapus() {
+			$id = $this->uri->segment(3);
+			$this->cek_login->cek_sesi($datanya, 'status_masuk', 'ya', 'admin');
+			$where = array('id' => $id);
+			$this->Member_model->hapus($this->tabel_member, $where);
+			redirect('admin/dashboard/member');
 		}
 
 	}

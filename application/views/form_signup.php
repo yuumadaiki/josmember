@@ -55,7 +55,7 @@
 						<div class="alert alert-success">
 							<p>
 								<strong>Sukses !</strong> Membuat Akun... <br>
-								Untuk login <a href="<?=base_url('member/login')?>" class="alert-link">Klik Disini</a>
+								Untuk login <a href="<?=base_url()?>" class="alert-link">Klik Disini</a>
 							</p>
 						</div>
 					<?php
@@ -126,7 +126,7 @@
 							Have you registered ?
 						</span>
 
-						<a class="txt2" href="<?=base_url('member')?>">
+						<a class="txt2" href="<?=base_url()?>">
 							login
 						</a>
 					</div>
