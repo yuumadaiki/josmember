@@ -6,6 +6,9 @@
 		private $tabel = "admin";
 		private $tabel_member = "member";
 		private $tabel_upgrade = "upgrade";
+		private $tabel_post = "content";
+
+		private	$data_login = array('status_masuk' => 'ya');
 
 		public function __construct()
 		{
@@ -47,17 +50,43 @@
 		}
 	
 		public function dashboard() {
-			$datanya = array('status_masuk' => 'ya');
+			// $this->data_login = array('status_masuk' => 'ya');
 			$page = $this->uri->segment(3);
-			$this->cek_login->cek_sesi($datanya, 'status_masuk', 'ya', 'admin');
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
 
+			// untuk edit post
+			$view_id = NULL;
+			if ($page == 'edit_post') {
+				$id_content = $this->uri->segment(4);
+				$where = array('id_content' => $id_content);
+				$view_id = $this->Member_model->view_id($where, $this->tabel_post);
+			}
+
+			// update post
+			$update_data = $this->input->post();
+			if (($page == 'edit_post') && isset($update_data['tombol'])) {
+				// print_r($update_data);
+				$data_baru = array(
+									'judul' => $update_data['judul'],
+									'author' => $update_data['author'],
+									'kategori' => $update_data['kategori'],
+									'status' => $update_data['status'],
+									'link' => url_title($update_data['judul'], '-', TRUE),
+									'date' => date('Y-m-d H:i:s')
+								);
+				$where = array('id_content' => $update_data['id_content']);
+				$update = $this->Member_model->update_data($this->tabel_post, $where, $data_baru);
+				redirect($this->uri->uri_string());
+			}
 
 			$data = array(
 						'page' => $page,
 						'menu' => base_url('asset/dashboard_admin/menu.php'),
 						'content' => 'dashboard',
 						'member' => $this->Member_model->baca_data($this->tabel_member),
-						'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade)
+						'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
+						'post' => $this->Member_model->baca_data($this->tabel_post),
+						'post_id' => $view_id
 					);
 
 
@@ -71,14 +100,66 @@
 			}
 		}
 
-		// aksi
+		// Aksi untuk Member
 		public function hapus() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
 			$id = $this->uri->segment(3);
-			$this->cek_login->cek_sesi($datanya, 'status_masuk', 'ya', 'admin');
 			$where = array('id' => $id);
 			$this->Member_model->hapus($this->tabel_member, $where);
 			redirect('admin/dashboard/member');
 		}
+
+
+		// Aksi untuk post
+		public function input_data() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			$post = $this->input->post();
+			$data_input = array(
+							'judul' => $post['judul'], 
+							'content' => $post['content'],
+							'author' => $post['author'],
+							'kategori' => $post['kategori'],
+							'date' => date('Y-m-d H:i:s'),
+							'view' => 0,
+							'status' => $post['status'],
+							'link' => url_title($post['judul'], '-', TRUE)
+						);
+			// print_r($data_input);
+			$input = $this->Member_model->create($this->tabel_post, $data_input);
+			redirect('admin/dashboard/post');
+			// if ($input) {
+			// 	$data = array(
+			// 		'page' => $page,
+			// 		'menu' => base_url('asset/dashboard_admin/menu.php'),
+			// 		'content' => 'dashboard',
+			// 		'member' => $this->Member_model->baca_data($this->tabel_member),
+			// 		'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
+			// 		'post' => $this->Member_model->baca_data($this->tabel_post),
+			// 		'notif_input' => 'sukses'
+			// 	);
+			// 	$this->load->view('admin/dashboard/layout',$data);
+			// } else {
+			// 	$data = array(
+			// 		'page' => $page,
+			// 		'menu' => base_url('asset/dashboard_admin/menu.php'),
+			// 		'content' => 'dashboard',
+			// 		'member' => $this->Member_model->baca_data($this->tabel_member),
+			// 		'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
+			// 		'post' => $this->Member_model->baca_data($this->tabel_post),
+			// 		'notif_input' => 'sukses'
+			// 	);
+			// 	$this->load->view('admin/dashboard/layout',$data);
+			// }
+		}
+
+		public function hapus_post() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			$id = $this->uri->segment(3);
+			$where = array('id_content' => $id);
+			$this->Member_model->hapus($this->tabel_post, $where);
+			redirect('admin/dashboard/post');
+		}
+
 
 	}
 	

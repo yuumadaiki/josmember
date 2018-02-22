@@ -53,7 +53,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li <?php if ($page == 'post') {
+                <li <?php if ($page == 'post' || $page == 'tambah_post' || $page == 'edit_post') {
                     echo 'class = "active"';
                 } ?> >
                     <a href="<?=base_url('admin/dashboard/post')?>">

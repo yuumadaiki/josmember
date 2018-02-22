@@ -18,6 +18,12 @@
 			}
 		}
 
+		public function cek_sesi_member() {
+			if ($_SESSION['member_masuk'] != 'ya') {
+				redirect('member');
+			}
+		}
+
 
 	}
 

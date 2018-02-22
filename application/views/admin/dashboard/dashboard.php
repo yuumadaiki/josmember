@@ -117,11 +117,15 @@
                             <div class="content">
                                 <?php  
                                     if ($page == 'post') {
-                                        $this->load->view('admin/dashboard/c_form_post');
+                                        $this->load->view('admin/dashboard/c_list_post');
                                     } else if ($page == 'member') {
                                         $this->load->view('admin/dashboard/c_member');
                                     } else if ($page == 'upgrade') {
                                         $this->load->view('admin/dashboard/c_upgrade');
+                                    } else if ($page == 'tambah_post') {
+                                        $this->load->view('admin/dashboard/c_tambah_post');
+                                    } else if ($page == 'edit_post') {
+                                        $this->load->view('admin/dashboard/c_edit_post');
                                     }
                                     
                                 ?>  
