@@ -30,10 +30,17 @@
 								'password' => md5($input['password'])
 							);
 				$cek = $this->Login_model->cek($data_login, $this->tabel_member);
-				echo $cek->num_rows();
+				// echo $cek->num_rows();
+				$data = $cek->result_array();
+				
+				// print_r();
+				// echo $data[0]['nama'];
+				
 				if ($cek->num_rows() > 0) {
 					$data_masuk = array(
-									'member_masuk' => 'ya'
+									'member_masuk' => 'ya',
+									'nama' => $data[0]['nama'],
+									'id_member' => $data[0]['id']
 								);
 					$this->session->set_userdata($data_masuk);
 					redirect('member/dashboard');
@@ -122,7 +129,8 @@
 
 			$data = array(
 						'page' => $page,
-						'title' => $title
+						'title' => $title,
+						'nama' => $_SESSION['nama']
 					);
 			$this->load->view('member/layout',$data);
 
@@ -133,6 +141,9 @@
 				redirect('member');
 			}
 		}
+
+		
+
 
 	}
 	

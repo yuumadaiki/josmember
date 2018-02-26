@@ -1,45 +1,75 @@
-<center>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>English Course</title>
+	<link rel="stylesheet" href="css\css.css">
+	<link rel="stylesheet" href="css\font-awesome.css">
+	<link rel="stylesheet" href="css\font-awesome.min.css">
+	<link rel="stylesheet" href="css\bootstrap.css">
+	<link rel="stylesheet" href="css\bootstrap.min.css">
+
+	<script src="js\bootstrap.js"></script>
+	<script src="js\bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="navbar">
+		<ul>
+			<center>
+			<div id="wrapper">
+				<li class="image"><img src="img/fix.png" alt=" logo"></li>
+				<!-- <div class="akun"> -->
+					<li class="akun">Immelman<div style="float: right" class="akun_drop">
+						<div class="icon">
+							<div class="fa fa-user"></div>
+							<div class="nama">
+								Immelman
+							</div>
+							<div class="ket">
+								081804745217
+							</div>
+							<div class="b_edit">
+								<a href="">Edit Profil</a>
+							</div>
+						</div>
+					</div></li>
+					<li class="button"><button class="btn upgrade" type="">Upgrade</button>
+				<!-- </div> -->
+			</div>
+		</center>
+		</ul>
+	</div>
+	<div id="space">
+		
+	</div>
+	<center>
 		<div id="wrapper">
 			<div class="row">
 				<div class="col-md-3">
 					<div id="menu">
 						<ul>
 							<li><a href="" class="active">Home</a></li>
-							<li><a onclick="myFunction()" class="btn">Video</a></li>
+							<li><a onclick="myFunction()" class="btn">SMP</a></li>
 							<div id="myDropdown" class="hide">
-								<a href="#home">Judul 1</a>
-								<a href="#about">Judul 2</a>
-								<a href="#contact">Judul 3</a>
-								<a href="#contact">Others <i class="fa fa-angle-double-right other"></i></a>
+								<a href="#home">Video</a>
+								<a href="#about">Modul</a>
+								<a href="#contact">Contact</a>
 							</div>
-							<li><a href="">Modul</a></li>
+							<li><a href="">SMA</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-9">
 					<div id="content">
 						<div class="section">
-							<?php  
-								$judul = NULL;
-								if (!isset($page)) {
-									$judul = "Home";
-								} else if ($page == 'upgrade') {
-									$judul = "Upgrade";
-								} else if ($page == 'upload_bukti') {
-									$judul = "Upload Bukit Pembayaran";
-								}
-								echo $judul;
-							?>
+							List Video
 						</div>
-						<p>
-							<?php  
-								if ($page == 'upgrade') {
-									$this->load->view('member/c_upgrade');
-								} else if ($page == 'upload_bukti') {
-									$this->load->view('member/c_upload_bukti');
-								}
-							?>
-						</p>
+						
 					</div>
 				</div>
 				<!-- Modal -->

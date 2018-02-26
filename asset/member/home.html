@@ -1,4 +1,63 @@
-<center>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>English Course</title>
+	<link rel="stylesheet" href="css\css.css">
+	<link rel="stylesheet" href="css\font-awesome.css">
+	<link rel="stylesheet" href="css\font-awesome.min.css">
+	<link rel="stylesheet" href="css\bootstrap.css">
+	<link rel="stylesheet" href="css\bootstrap.min.css">
+
+	<script src="js\bootstrap.js"></script>
+	<script src="js\bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="navbar">
+		<ul>
+			<center>
+			<div id="wrapper">
+				<li class="image"><img src="img/fix.png" alt=" logo"></li>
+				<!-- <div class="akun"> -->
+					<li class="akun">IMMELMAN
+					<div style="float: right" class="akun_drop">
+						<div class="icon">
+							<div class="fa fa-user"></div>
+							<div class="nama">
+								Immelman
+							</div>
+							<div class="ket">
+								081804745217
+							</div>
+							<div class="space_button">
+								<div class="button_in_drop">
+									<a href="">Edit Profil</a>
+								</div>
+								<div class="logout button_in_drop">
+									<a href="">Logout</a>
+								</div>
+							</div>
+						</div>
+					</div></li>
+					<div class="level">
+						<li class="button"><button class="class" type="">SMA</button>
+						<li class="button"><button class="class" type="">SMP</button>
+					</div>
+					<li class="button"><button class="btn upgrade" type="">UPGRADE</button>
+				<!-- </div> -->
+			</div>
+		</center>
+		</ul>
+	</div>
+	<div id="space">
+		
+	</div>
+	<center>
 		<div id="wrapper">
 			<div class="row">
 				<div class="col-md-3">
@@ -19,27 +78,25 @@
 				<div class="col-md-9">
 					<div id="content">
 						<div class="section">
-							<?php  
-								$judul = NULL;
-								if (!isset($page)) {
-									$judul = "Home";
-								} else if ($page == 'upgrade') {
-									$judul = "Upgrade";
-								} else if ($page == 'upload_bukti') {
-									$judul = "Upload Bukit Pembayaran";
-								}
-								echo $judul;
-							?>
+							Home
 						</div>
-						<p>
-							<?php  
-								if ($page == 'upgrade') {
-									$this->load->view('member/c_upgrade');
-								} else if ($page == 'upload_bukti') {
-									$this->load->view('member/c_upload_bukti');
-								}
-							?>
-						</p>
+						<div class="frame_video">
+							<div class="video">
+							</div>
+							<div class="judul">
+								Introduction Lorem Ipsum Dolor Sit Amet
+							</div>
+							<div class="time">
+								<i class="fa fa-clock-o"></i> 10.30, 19 October 2018
+							</div>
+							<div class="author">
+								<i class="fa fa-user"></i> <button type="button" data-toggle="modal" data-target="#myModal"> Akihisa, hey! try to click me !</button>
+								
+							</div>
+						</div>
+						<div class="deskripsi">
+							Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,
+						</div>
 					</div>
 				</div>
 				<!-- Modal -->
