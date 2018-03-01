@@ -24,7 +24,7 @@
                               echo "<td>$no</td>";
                               echo "<td>".$row['nama']."</td>";
                               echo "<td>".$row['email']."</td>";
-                              echo "<td>".$row['status']."</td>";
+                              echo "<td>".ucfirst($row['status'])."</td>";
                               echo "<td>".strtoupper($row['tingkat'])."</td>";
                               echo "<td>";
                               if (isset($row['wa']) && $row['wa'] != '') {

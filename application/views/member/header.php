@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/bootstrap.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/bootstrap.min.css">
 
-	<script src="<?=base_url('asset/member/')?>js\bootstrap.js"></script>
-	<script src="<?=base_url('asset/member/')?>js\bootstrap.min.js"></script>
+	<script src="<?=base_url('asset/member/')?>js/bootstrap.js"></script>
+	<script src="<?=base_url('asset/member/')?>js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -42,8 +42,8 @@
 						</div>
 					</div></li>
 					<div class="level">
-						<li class="button"><button class="class" type="">SMA</button>
-						<li class="button"><button class="class" type="">SMP</button>
+						<li class="button"><a class="class btn" style="color: #fff" href="<?=base_url('member/dashboard/sma')?>" type="">SMA</a>
+						<li class="button"><a class="class btn" style="color: #fff" href="<?=base_url('member/dashboard/smp')?>" type="">SMP</a>
 					</div>
 					<li class="button"><a class="btn upgrade" type="" href="<?=base_url('member/dashboard/upgrade')?>">UPGRADE</a>
 				<!-- </div> -->

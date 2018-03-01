@@ -79,6 +79,11 @@
 				redirect($this->uri->uri_string());
 			}
 
+			// untuk upgrade bagian nama
+			if (($page == 'upgrade')) {
+				
+			}
+
 			$data = array(
 						'page' => $page,
 						'menu' => base_url('asset/dashboard_admin/menu.php'),
@@ -160,6 +165,26 @@
 			redirect('admin/dashboard/post');
 		}
 
+		public function hapus_upgrade() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			$id = $this->uri->segment(3);
+			$where = array('id_upgrade' => $id);
+			$this->Member_model->hapus($this->tabel_upgrade, $where);
+			redirect('admin/dashboard/upgrade');
+		}
+
+		public function upgrade_member() {
+			$get = $this->input->get();
+			$id_upgrade = $get['id_upgrade'];
+			$id_member = $get['id_member'];
+			$where_upgrade = array('id_upgrade' => $id_upgrade);
+			$where_member = array('id' => $id_member);
+			$baru_ugrade = array('lunas' => 1 );
+			$baru_member = array('status' => 'premium' );
+			$this->Member_model->update_data($this->tabel_upgrade, $where_upgrade, $baru_ugrade);
+			$this->Member_model->update_data($this->tabel_member, $where_member, $baru_member);
+			redirect('admin/dashboard/upgrade');
+		}
 
 	}
 	

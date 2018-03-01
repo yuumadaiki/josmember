@@ -4,15 +4,23 @@
 				<div class="col-md-3">
 					<div id="menu">
 						<ul>
-							<li><a href="" class="active">Home</a></li>
-							<li><a onclick="myFunction()" class="btn">Video</a></li>
-							<div id="myDropdown" class="hide">
-								<a href="#home">Judul 1</a>
-								<a href="#about">Judul 2</a>
-								<a href="#contact">Judul 3</a>
-								<a href="#contact">Others <i class="fa fa-angle-double-right other"></i></a>
-							</div>
-							<li><a href="">Modul</a></li>
+							<li><a href="<?=base_url('member/dashboard')?>" class="active">Home</a></li>
+							<?php  
+								if (isset($page) && ($page == 'smp' OR $page == 'sma')) {
+							?>
+								<li><a onclick="myFunction()" class="btn">Video</a></li>
+								<div id="myDropdown" class="hide">
+									<?php  
+										for($i = 0;$i < count($content)-1;++$i) {
+											echo "<a href='".base_url("member/dashboard/$page/".$content[$i]['link'])."'>".$content[$i]['judul']."</a>";
+										}
+									?>
+									<a href="#contact">Others <i class="fa fa-angle-double-right other"></i></a>
+								</div>
+								<li><a href="">Modul</a></li>
+							<?php
+								}
+							?>
 						</ul>
 					</div>
 				</div>
@@ -27,6 +35,12 @@
 									$judul = "Upgrade";
 								} else if ($page == 'upload_bukti') {
 									$judul = "Upload Bukit Pembayaran";
+								} else if ($page == 'terimakasih') {
+									$judul = "Terimakasih Telah Melakukan Pembayaran";
+								} else if ($page == 'smp') {
+									$judul = "Materi SMP";
+								} else if ($page == 'sma') {
+									$judul = "Materi SMA";
 								}
 								echo $judul;
 							?>
@@ -37,6 +51,14 @@
 									$this->load->view('member/c_upgrade');
 								} else if ($page == 'upload_bukti') {
 									$this->load->view('member/c_upload_bukti');
+								} else if ($page == 'terimakasih') {
+									$this->load->view('member/c_terimakasih');
+								} else if ($page == 'smp') {
+									$this->load->view('member/c_smp');
+								} else if ($page == 'sma') {
+									$this->load->view('member/c_sma');
+								} else {
+									$this->load->view('member/c_home');
 								}
 							?>
 						</p>

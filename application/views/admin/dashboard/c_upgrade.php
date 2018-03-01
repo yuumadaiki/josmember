@@ -5,7 +5,7 @@
         	<th>Nama</th>
         	<th>Status</th>
           <th>Bukti Pembayaran</th>
-          <th>Aksi</th>
+          <th style="text-align: center;">Aksi</th>
         </thead>
         <tbody>
             <?php  
@@ -18,12 +18,29 @@
                     echo "</tr>";
                 } else {
                     foreach ($upgrade as $row) {
+                              // cek kelunasa
+                              $lunas = "Belum Lunas";
+                              if ($row['lunas'] == 1) {
+                                  $lunas = "Sudah Lunas";
+                              }
+                              // // cek nama
+                              // if ($row['id_member']) {
+                              //   $this->Member_model->view_id();
+                              // }
                               echo "<tr>";
                               echo "<td>$no</td>";
                               echo "<td>".$row['id_member']."</td>";
-                              echo "<td>".$row['status']."</td>";
-                              echo "<td><a href='".base_url("upload/bukti_pembayaran/$row[bukti_pembayaran]")."'>Lihat</a></td>";
-                              echo "<a href='".base_url("admin/hapus/$row[id]")."' class='btn btn-default btn-danger'>Hapus</a>";
+                              echo "<td>".$lunas."</td>";
+                              echo "<td><a href='".base_url("uploads/$row[bukti_pembayaran]")."' target='_blank'>Lihat</a></td>";
+                              echo "<td style='text-align: center'>";
+                              // cek kondisi tombol aktivasi
+                              if ($row['lunas'] == 1) {
+                                echo "<a class='btn btn-default btn-success' style='cursor: default'>Sudah Aktif</a>";
+                              } else {
+                                echo "<a href='".base_url('admin/upgrade_member/')."?id_upgrade=".$row['id_upgrade']."&id_member=".$row['id_member']."' class='btn btn-default btn-primary'>Aktivkan</a>";
+                              }
+                              echo " &nbsp &nbsp";
+                              echo "<a href='".base_url("admin/hapus_upgrade/$row[id_upgrade]")."' class='btn btn-default btn-danger'>Hapus</a>";
                               echo "</td>";
                               echo "</tr>";
                               $no++;
