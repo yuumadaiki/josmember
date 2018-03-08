@@ -18,8 +18,8 @@
 			    <label for="sel1">Kategori</label>
 			    <select class="form-control" name="kategori">
 			    	<option value="">-- PILIH KATEGORI -- </option>
-			        <option value="smp">SMP</option>
-			        <option value="sma">SMA</option>
+			        <option value="basic">Basic</option>
+			        <option value="advance">Advance</option>
 			    </select>
             </div>
         	</div>

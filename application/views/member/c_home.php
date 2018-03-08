@@ -1,11 +1,25 @@
-<div class="frame_video">
-	<div class="video">
-		
-	</div>
-	<div class="judul">
-		Introduction
-	</div>
-	<div class="time">
-		<i class="fa fa-clock-o"></i> 27 Februari 2018
-	</div>
+<h1>Pilih Tingkat yang Ingin Dipilih</h1>
+<div class="kotak">
+	<ul>
+		<li>
+			<a href="<?=base_url('member/dashboard/basic')?>">
+				<div class="kiri">
+					<i class="fa fa-check fa-lg"></i>
+				</div>
+				<div class="kanan">
+					Basic
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?=base_url('member/dashboard/advance')?>">
+				<div class="kiri">
+					<i class="fa fa-check fa-lg"></i>
+				</div>
+				<div class="kanan">
+					Advance
+				</div>
+			</a>
+		</li>
+	</ul>
 </div>

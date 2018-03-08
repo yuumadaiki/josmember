@@ -26,7 +26,7 @@
                               echo "<td>$row[judul]</td>";
                               echo "<td>$row[author]</td>";
                               echo "<td>$row[view]</td>";
-                              echo "<td>".strtoupper($row['kategori'])."</td>";
+                              echo "<td>".ucfirst($row['kategori'])."</td>";
                               echo "<td>".strtoupper($row['status'])."</td>";
                               echo "<td style='text-align: center'>";
                               echo "<a href='".base_url("admin/dashboard/edit_post/$row[id_content]")."' class='btn btn-default btn-info'>Edit</a>";

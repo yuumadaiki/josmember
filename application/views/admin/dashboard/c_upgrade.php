@@ -23,13 +23,9 @@
                               if ($row['lunas'] == 1) {
                                   $lunas = "Sudah Lunas";
                               }
-                              // // cek nama
-                              // if ($row['id_member']) {
-                              //   $this->Member_model->view_id();
-                              // }
                               echo "<tr>";
                               echo "<td>$no</td>";
-                              echo "<td>".$row['id_member']."</td>";
+                              echo "<td>".$nama[$no-1]['nama']."</td>";
                               echo "<td>".$lunas."</td>";
                               echo "<td><a href='".base_url("uploads/$row[bukti_pembayaran]")."' target='_blank'>Lihat</a></td>";
                               echo "<td style='text-align: center'>";

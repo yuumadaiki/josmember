@@ -4,7 +4,7 @@
 }
 body{
 	text-align: center;
-	font-family: "Roboto-medium" !important;
+	font-family: "Roboto","Roboto-medium" !important;
 	font-size: 12pt;
 	margin: 0;
 	background-color: #EBEBEB !important;
@@ -151,23 +151,28 @@ body{
 	display: block;
 	margin-right: 0;
 	margin-left: 0;
-	text-decoration: none;
-	color: black;
 }
 #navbar .akun_drop .logout{
 	background-color: #1D3720;
-	text-decoration: none;
-	color: white;
 }
 #navbar .akun_drop .button_in_drop a{
 	text-decoration: none;
 	color: black;
 }
+#navbar .akun_drop .logout a{
+	text-decoration: none;
+	color: white;
+}
 #navbar .akun_drop .button_in_drop:hover{
 	cursor: pointer;
+}
+#navbar .akun_drop .button_in_drop a:hover{
 	color: #5886a6;
 }
 #navbar .akun_drop .logout:hover{
+	/*box-shadow: 0 3px 5px grey*/
+}
+#navbar .akun_drop .logout a:hover{
 	color: white;
 }
 .responsive_menu{
@@ -175,9 +180,6 @@ body{
 }
 #space{
 	margin-top: 50px;
-}
-#main-section{
-	min-height: 550px;
 }
 #menu {
 	width: 100%;
@@ -206,15 +208,21 @@ body{
 	border-bottom: 3px solid #1d2837;
 	/*5886a6*/
 }
+#menu li a:hover:not(.active){
+	/*box-shadow: 0px 1px 3px grey;*/
+}
 #menu ul .hide{
 	display: none;
+}
+#menu ul .btn:focus, .btn:hover{
+	/*box-shadow: 0px 3px 10px grey;*/
 }
 #menu ul .dropdown{
 	display: block;
 	width: 100%;
 	height: auto;
 	background-color: #1d2837;
-	z-index: 0;
+	z-index: 1;
 }
 #menu ul .dropdown a{
 	color: white;
@@ -235,7 +243,6 @@ body{
 	padding: 10px;
 	margin: 10px 0;
 	float: right;
-	min-height: 100%;
 	/*box-shadow: 0 1px 3px grey;*/
 }
 #content .section{
@@ -292,18 +299,15 @@ body{
 .mymodal-text{
 	text-align: left;
 }
-.clear{
-	clear: both;
-}
 #footer{
 	width: 100%;
 	height: auto;
 	background-color: white;
 	/*box-shadow: 0 -1px 3px grey;*/
-	bottom: 0;
+	bottom: -1;
 	text-align: center;
 	margin-top: 50px;
-	/*position: absolute;*/
+	position: absolute;
 }
 #footer .text{
 	padding: 10px 0;
@@ -435,58 +439,51 @@ body{
 	}
 }
 
-.cener {
-	text-align: center;
-}
-
 #tabelnya {
-	width: 80%;
+	margin-top: 30px;
+	width: 300px;
 }
+
+	#tabelnya tbody td {
+		padding: 15px;
+	}
+
 .sorry {
-	width: 50%;
-	margin-top: 40px;
-	margin-bottom: 20px;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	width: 200px;
 }
-.pesan-sorry {
-	text-align: center;
-}
-.premium-badge {
+	.pesan-sorry {
+		margin-left: 25px;
+		margin-right: 25px;
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 150px;
+	}
+
+.btn-besar {
 	display: inline-block;
-	padding: 5px;
-	background-color: #f39c12;
-	margin-left: 10px;
+	width: auto;
+	padding: 10px;
+	background-color: #f1c40f;
+	margin-top: 20px;
+	text-transform: uppercase;
 	border-radius: 5px;
+	font-weight: 700;
+	color: #fff;
 }
-.premium-badge:hover {
-	background-color: #e7930e;
-}
-
-
-/*untuk bagian home*/
-.kotak {
-	margin: 20px 0 60px;
-	width: 60%;
-}
-	.kotak ul {
-		list-style: none;
-	}
-	.kotak ul a {
+	.btn-besar:hover {
 		color: #fff;
-		display: flex;
-		padding: 10px 20px 10px 20px;
-		background-color: #7f8c8d;
-		width: 180px;
-		margin: 5px;
-	}
-	.kotak ul a:hover {
-		background-color: #95a5a6;
+		background-color: #e4ba0f;
 		text-decoration: none;
 	}
-	.kotak ul .kiri {
-		width: 20%;
-		display: inline-block;
-	}
-	.kotak ul .kanan {
-		width: 80%;
-		display: inline-block;
-	}
+
+.premium-badge {
+	margin-left: 10px;
+	padding: 5px;
+	width: auto;
+	display: inline-block;
+	/*color: #fff;*/
+	background-color: #f1c40f;
+	border-radius: 5px;
+}

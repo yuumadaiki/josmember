@@ -18,6 +18,12 @@
 			return $data;
 		}
 
+		public function nama() {
+			$query = "SELECT member.nama, upgrade.id_member FROM member RIGHT JOIN upgrade ON member.id=upgrade.id_member";
+			$data = $this->db->query($query);
+			return $data->result_array();
+		}
+
 		public function create($table, $data) {
 			return $this->db->insert($table, $data);
 		}

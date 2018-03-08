@@ -22,16 +22,16 @@
 			    <label for="sel1">Kategori</label>
 			    <select class="form-control" name="kategori">
 			    	<option value="">-- PILIH KATEGORI -- </option>
-			        <option value="smp" <?php  
-                        if ($post_id[0]['kategori'] == 'smp') {
+			        <option value="basic" <?php  
+                        if ($post_id[0]['kategori'] == 'basic') {
                             echo "selected";
                         }
-                    ?>>SMP</option>
-			        <option value="sma" <?php  
-                        if ($post_id[0]['kategori'] == 'sma') {
+                    ?>>Basic</option>
+			        <option value="Advance" <?php  
+                        if ($post_id[0]['kategori'] == 'Advance') {
                             echo "selected";
                         }
-                    ?>>SMA</option>
+                    ?>>Advance</option>
 			    </select>
             </div>
         	</div>

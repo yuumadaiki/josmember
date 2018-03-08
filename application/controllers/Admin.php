@@ -80,8 +80,10 @@
 			}
 
 			// untuk upgrade bagian nama
-			if (($page == 'upgrade')) {
-				
+			$nama = NULL;
+			if ($page == 'upgrade') {
+				$data_upgrade = $this->Member_model->baca_data($this->tabel_upgrade);
+				$nama = $this->Member_model->nama();
 			}
 
 			$data = array(
@@ -91,7 +93,8 @@
 						'member' => $this->Member_model->baca_data($this->tabel_member),
 						'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
 						'post' => $this->Member_model->baca_data($this->tabel_post),
-						'post_id' => $view_id
+						'post_id' => $view_id,
+						'nama' => $nama
 					);
 
 
@@ -129,32 +132,8 @@
 							'status' => $post['status'],
 							'link' => url_title($post['judul'], '-', TRUE)
 						);
-			// print_r($data_input);
 			$input = $this->Member_model->create($this->tabel_post, $data_input);
 			redirect('admin/dashboard/post');
-			// if ($input) {
-			// 	$data = array(
-			// 		'page' => $page,
-			// 		'menu' => base_url('asset/dashboard_admin/menu.php'),
-			// 		'content' => 'dashboard',
-			// 		'member' => $this->Member_model->baca_data($this->tabel_member),
-			// 		'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
-			// 		'post' => $this->Member_model->baca_data($this->tabel_post),
-			// 		'notif_input' => 'sukses'
-			// 	);
-			// 	$this->load->view('admin/dashboard/layout',$data);
-			// } else {
-			// 	$data = array(
-			// 		'page' => $page,
-			// 		'menu' => base_url('asset/dashboard_admin/menu.php'),
-			// 		'content' => 'dashboard',
-			// 		'member' => $this->Member_model->baca_data($this->tabel_member),
-			// 		'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
-			// 		'post' => $this->Member_model->baca_data($this->tabel_post),
-			// 		'notif_input' => 'sukses'
-			// 	);
-			// 	$this->load->view('admin/dashboard/layout',$data);
-			// }
 		}
 
 		public function hapus_post() {

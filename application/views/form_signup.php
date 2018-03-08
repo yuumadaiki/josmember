@@ -89,14 +89,6 @@
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
-					<div class="validate-input" style="margin-bottom: 20px;">
-						<select name="tingkat" id="" class=" form-control" required>
-							<option value="">-- PILIH TINGKAT --</option>
-							<option value="smp">SMP</option>
-							<option value="sma">SMA</option>
-						</select>
-					</div>
-
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="line">
 						<span class="focus-input100" data-placeholder="ID Line"></span> 

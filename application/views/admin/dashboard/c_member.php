@@ -5,7 +5,6 @@
         	<th>Nama</th>
         	<th>Email</th>
         	<th>Status</th>
-        	<th>Tingkat</th>
             <th>Kontak</th>
             <th>Action</th>
         </thead>
@@ -25,7 +24,6 @@
                               echo "<td>".$row['nama']."</td>";
                               echo "<td>".$row['email']."</td>";
                               echo "<td>".ucfirst($row['status'])."</td>";
-                              echo "<td>".strtoupper($row['tingkat'])."</td>";
                               echo "<td>";
                               if (isset($row['wa']) && $row['wa'] != '') {
                                   echo "WA : ".$row['wa']."<br>";

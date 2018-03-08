@@ -69,8 +69,7 @@
 								'nama' => $input['nama'], 
 								'email' => $input['email'],
 								'password' => md5($input['password']),
-								'status' => 'free',
-								'tingkat' => $input['tingkat']
+								'status' => 'free'
 							);
 					} else if (!isset($input['line']) && isset($input['nohp'])) {
 						$data_input = array(
@@ -78,7 +77,6 @@
 								'email' => $input['email'],
 								'password' => md5($input['password']),
 								'status' => 'free',
-								'tingkat' => $input['tingkat'],
 								'line' => $input['nohp']
 							);
 					} else if (!isset($input['nohp']) && isset($input['line'])) {
@@ -87,7 +85,6 @@
 								'email' => $input['email'],
 								'password' => md5($input['password']),
 								'status' => 'free',
-								'tingkat' => $input['tingkat'],
 								'line' => $input['line']
 							);
 					} else {
@@ -96,7 +93,6 @@
 								'email' => $input['email'],
 								'password' => md5($input['password']),
 								'status' => 'free',
-								'tingkat' => $input['tingkat'],
 								'line' => $input['line'],
 								'wa' => $input['nohp']
 							);
@@ -129,24 +125,22 @@
 				}	
 			}
 
-			// untuk genreate tingkat sama status
+			// untuk genreate sama status
 			$id_member = $this->session->userdata('id_member');
 			$status = NULL;
-			$tingkat = NULL;
 			if (isset($id_member)) {
 				$where = array('id' => $id_member);
 				$data = $this->Member_model->view_id($where, $this->tabel_member);
 				$status = $data[0]['status'];
-				$tingkat = $data[0]['tingkat'];
 			}
 
 			// untuk contentnya
 			$menu = NULL;
-			if (isset($page) && $page == 'smp') {
-				$where = array('kategori' => 'smp');
+			if (isset($page) && $page == 'basic') {
+				$where = array('kategori' => 'basic');
 				$menu = $this->Member_model->view_id($where,$this->tabel_content);
 			} else {
-				$where = array('kategori' => 'sma');
+				$where = array('kategori' => 'advance');
 				$menu = $this->Member_model->view_id($where,$this->tabel_content);
 			}
 
@@ -158,15 +152,25 @@
 				$isi = $this->Member_model->view_id($where, $this->tabel_content);
 			}
 
+			// untuk bagian upgrade
+			$cek = NULL;
+			if ($status == 'free') {
+				$id_sesi = $this->session->userdata('id_member');
+				$where = array('id_member' => $id_sesi);
+				$cek = $this->Member_model->view_id($where, $this->tabel_upgrade);
+				//digunakan untuk mengecek apakah dalam proses upgrade atau tidak
+			}
+
+
 			$data = array(
 						'page' => $page,
 						'title' => $title,
 						'nama' => $_SESSION['nama'],
 						'status' => $status,
-						'tingkat' => $tingkat,
 						'content' => $menu,
 						'url' => $url,
-						'isi' => $isi
+						'isi' => $isi,
+						'cek' => $cek
 					);
 			$this->load->view('member/layout',$data);
 
@@ -206,20 +210,6 @@
             } else {
             	echo "Gagal";
             }
-		}
-
-		public function coba() {
-			$id = $this->session->userdata('id_member');
-			echo $id;
-			if (isset($id)) {
-				$where = array('id' => $id);
-				$data = $this->Member_model->view_id($where, $this->tabel_member);
-				print_r($data);
-				echo "<br>";
-				echo $data[0]['status'];
-			} else {
-				echo "Tidak terset";
-			}
 		}
 
 	}
